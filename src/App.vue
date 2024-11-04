@@ -12,6 +12,18 @@ const filteredNames = computed(() =>
   )
 )
 
+function create() {
+  if (hasValidInput()) {
+  
+    const fullName = `${last.value}, ${first.value}`
+
+    if (!names.includes(fullName)) {
+      names.push(fullName)
+      first.value = last.value = ''
+    }
+  }
+}
+
 function hasValidInput() {
   return first.value.trim() && last.value.trim()
 }
