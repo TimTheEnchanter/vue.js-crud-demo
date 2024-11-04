@@ -8,7 +8,9 @@ const last = ref('')
 
 
 
-
+function hasValidInput() {
+  return first.value.trim() && last.value.trim()
+}
 </script>
 
 <template>
@@ -31,10 +33,16 @@ const last = ref('')
   font-size: inherit;
 }
 
+input {
+  display: block;
+  margin-bottom: 10px;
+}
 
+.buttons {
+  clear: both;
+}
 
-
-
-
-
+button + button {
+  margin-left: 5px;
+}
 </style>
