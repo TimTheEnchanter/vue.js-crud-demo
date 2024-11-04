@@ -31,6 +31,14 @@ function update() {
   }
 }
 
+function del() {
+  if (selected.value) {
+    const i = names.indexOf(selected.value)
+    names.splice(i, 1)
+    selected.value = first.value = last.value = ''
+  }
+}
+
 function hasValidInput() {
   return first.value.trim() && last.value.trim()
 }
