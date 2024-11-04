@@ -6,7 +6,11 @@ const prefix = ref('')
 const first = ref('')
 const last = ref('')
 
-
+const filteredNames = computed(() =>
+  names.filter((n) =>
+    n.toLowerCase().startsWith(prefix.value.toLowerCase())
+  )
+)
 
 function hasValidInput() {
   return first.value.trim() && last.value.trim()
@@ -16,7 +20,9 @@ function hasValidInput() {
 <template>
   <div><input v-model="prefix" placeholder="Filter prefix"></div>
 
-
+  <select size="5" v-model="selected">
+    <option v-for="name in filteredNames" :key="name">{{ name }}</option>
+  </select>
 
   <label>Name: <input v-model="first"></label>
   <label>Surname: <input v-model="last"></label>
@@ -36,6 +42,12 @@ function hasValidInput() {
 input {
   display: block;
   margin-bottom: 10px;
+}
+
+select {
+  float: left;
+  margin: 0 1em 1em 0;
+  width: 14em;
 }
 
 .buttons {
