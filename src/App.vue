@@ -12,6 +12,10 @@ const filteredNames = computed(() =>
   )
 )
 
+watch(selected, (name) => {
+  [last.value, first.value] = name.split(', ')
+})
+
 function create() {
   if (hasValidInput()) {
 
