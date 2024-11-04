@@ -14,13 +14,20 @@ const filteredNames = computed(() =>
 
 function create() {
   if (hasValidInput()) {
-  
+
     const fullName = `${last.value}, ${first.value}`
 
     if (!names.includes(fullName)) {
       names.push(fullName)
       first.value = last.value = ''
     }
+  }
+}
+
+function update() {
+  if (hasValidInput() && selected.value) {
+    const i = names.indexOf(selected.value)
+    names[i] = selected.value = `${last.value}, ${first.value}`
   }
 }
 
